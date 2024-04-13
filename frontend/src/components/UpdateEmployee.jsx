@@ -3,14 +3,14 @@ import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
 import axiosInstance from '../axiosinterceptor';
 import { useParams, useNavigate } from 'react-router-dom';
-import backgroundimage from '../images/list.jpg'
+
 
 const UpdateEmployee = () => {
   const [employee, setEmployee] = useState({
     name: '',
     email: '',
-    pos:'',
-    display: ''
+    position:'',
+    address: ''
   });
 
   const { id: employeeId } = useParams();
@@ -18,7 +18,7 @@ const UpdateEmployee = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    axiosInstance.get(`http://localhost:3005/admin/employees/${employeeId}`)
+    axiosInstance.get(`http://localhost:3002/admin/employees/${employeeId}`)
       .then(response => {
         setEmployee(response.data);
       })
@@ -32,7 +32,7 @@ const UpdateEmployee = () => {
   };
 
   const updateData = () => {
-    axiosInstance.put(`http://localhost:3005/admin/employees/${employeeId}`, employee)
+    axiosInstance.put(`http://localhost:3002/admin/employees/${employeeId}`, employee)
       .then((res) => {
         alert(res.data.message);
         navigate('/employees');
@@ -49,7 +49,7 @@ const UpdateEmployee = () => {
       justifyContent: "center",
       alignItems: "center",
       minHeight: "calc(100vh - 64px)", 
-      backgroundImage: `url(${backgroundimage})`,
+      backgroundColor:'skyblue',
       padding: "20px",
     }}
   >
@@ -63,7 +63,7 @@ const UpdateEmployee = () => {
         maxWidth: "600px",
       }}
     >
-        <h1>Employees</h1>
+        <h1>UPDATE</h1>
         <div style={{ margin: "5%" }}>
           <TextField
             fullWidth
@@ -87,8 +87,8 @@ const UpdateEmployee = () => {
             fullWidth
             variant='outlined'
             label="Position"
-            name="pos"
-            value={employee.pos || ''}
+            name="position"
+            value={employee.position || ''}
             onChange={inputHandler}
           />
           
@@ -97,8 +97,8 @@ const UpdateEmployee = () => {
             fullWidth
             variant='outlined'
             label="Address"
-            name="display"
-            value={employee.display || ''}
+            name="address"
+            value={employee.address || ''}
             onChange={inputHandler}
             multiline 
             rows={4}   

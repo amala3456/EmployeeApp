@@ -12,12 +12,12 @@ const Navbar = () => {
   return (
     <div>
       <Box sx={{ flexGrow: 1 }}>
-      <AppBar style={{backgroundColor:'purple'}} position="static">
+      <AppBar style={{backgroundColor:'blue'}} position="static">
           <Toolbar>
           <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
             Employee Dashboard
           </Typography>
-          <Button color="inherit"><Link style={{color:'white', textDecoration:'none'}} to={'/loginadmin'}>Admin Login</Link></Button>
+          <Button color="inherit"><Link style={{color:'white', textDecoration:'none'}} to={'/loginadmin'}>Admin-Login</Link></Button>
           <Button color="inherit"><Link style={{color:'white', textDecoration:'none'}} to={'/employees'}> Home</Link></Button>
           <Button color="inherit" onClick={tokenrelease}><Link style={{color:'white', textDecoration:'none'}}to={'/'}>Logout</Link></Button>
           </Toolbar>

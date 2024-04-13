@@ -11,7 +11,7 @@ router.post('/signup', async (req, res) => {
         res.status(200).send({ message: "User Added" });
     } catch (error) {
         console.log(error.message);
-        res.status(500).send({ error: "An error occurred while adding user" });
+        res.status(500).send({ error: "An error occurred" });
     }
 });
 
@@ -30,7 +30,7 @@ router.post('/login', async (req, res) => {
         }
     } catch (error) {
         console.log(error);
-        res.status(500).send({ error: "An error occurred while processing login" });
+        res.status(500).send({ error: "An error occurred" });
     }
 });
   

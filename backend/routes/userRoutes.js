@@ -5,21 +5,20 @@ const jwt = require('jsonwebtoken');
 const users = require('../model/auth');
 
 router.use(express.json())
-//signup route
 router.post('/', async (req, res) => {
   try {
     const data = req.body;
     let newUser = await users(data).save();
     let payload = { user: newUser.username, pwd: newUser.password };
     let token = jwt.sign(payload, 'reactblogapp');
-    res.status(200).send({ message: "User created successfully", token: token });
+    res.status(200).send({ message: "User created ", token: token });
   } catch (error) {
     console.log(error);
-    res.status(500).send({ error: "An error occurred while creating user" });
+    res.status(500).send({ error: "An error occurred" });
   }
 });
 
-//login routes
+
 router.post('/loginadmin',async(req,res)=>{
   let username= req.body.username;
   let password =req.body.password;

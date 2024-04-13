@@ -4,7 +4,7 @@ import TextField from "@mui/material/TextField";
 import { Button, Typography, Link } from "@mui/material";
 import { Link as RouterLink, useNavigate } from "react-router-dom";
 import axios from "axios";
-import backgroundimage from "../images/imagelogin.jpg"
+
 
 const Loginuser = () => {
   const navigate = useNavigate();
@@ -16,7 +16,7 @@ const Loginuser = () => {
 
   const addHandler = () => {
     axios
-      .post("http://localhost:3005/user/login", user)
+      .post("http://localhost:3002/user/login", user)
       .then((res) => {
         if (res.data.message === "User Login success") {
           alert(res.data.message);
@@ -33,7 +33,10 @@ const Loginuser = () => {
   return (
     <div
       style={{
-        backgroundImage:`url(${backgroundimage})`,
+        background:'#097925',
+        background:'#c31432',  
+        background:'-webkit-linear-gradient(to right, #240b36, #c31432)',
+        background: 'linear-gradient(to right, #240b36, #c31432)',
         minHeight: "100vh",
         display: "flex",
         justifyContent: "center",

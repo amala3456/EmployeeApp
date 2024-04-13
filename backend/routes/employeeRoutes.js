@@ -20,7 +20,7 @@ function verifyToken(req, res, next) {
     }
 }
 
-// POST request
+
 router.post('/add',verifyToken, async (req, res) => {
     try {
         const post = req.body;
@@ -28,11 +28,11 @@ router.post('/add',verifyToken, async (req, res) => {
         res.status(200).send({ message: "Employee Added" })
     } catch (error) {
         console.log(error.message)
-        res.status(500).send({ error: "An error occurred while adding employee" });
+        res.status(500).send({ error: "An error occurred" });
     }
 });
 
-// GET request
+
 router.get('/employees',verifyToken, async (req, res) => {
     try {
         const allEmployees = await employees.find(); 
@@ -40,11 +40,11 @@ router.get('/employees',verifyToken, async (req, res) => {
         console.log("All posts:", allEmployees);
     } catch (error) {
         console.log(error);
-        res.status(500).send({ error: "An error occurred while fetching posts" });
+        res.status(500).send({ error: "An error occurred " });
     }
 });
 
-//GET Request using a specific ID
+
 router.get('/employees/:id', verifyToken, async (req, res) => { 
     try {
       const post = await employees.findById(req.params.id);
@@ -55,7 +55,7 @@ router.get('/employees/:id', verifyToken, async (req, res) => {
     }
   });
 
-//UPDATE Employee
+
 router.put('/employees/:id', verifyToken, async (req, res) => {
     try {
       const updatedEmployee = await employees.findByIdAndUpdate(req.params.id, req.body, { new: true });
@@ -69,7 +69,7 @@ router.put('/employees/:id', verifyToken, async (req, res) => {
     }
   });
 
-  //DELETE
+ 
   router.delete('/employees/:id', verifyToken, async(req, res) => {
     try {
         const deleteEmployee = await employees.findByIdAndDelete(req.params.id);
@@ -83,7 +83,7 @@ router.put('/employees/:id', verifyToken, async (req, res) => {
     }
 });
 
-// GET Request to retrieve details of a specific employee using their ID
+
 router.get('/employees/:id/view', verifyToken, async (req, res) => {
     try {
         const employee = await employees.findById(req.params.id);

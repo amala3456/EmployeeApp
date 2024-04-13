@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import { Button } from "@mui/material";
 import axiosInstance from "../axiosinterceptor";
 import { useNavigate } from "react-router-dom";
-import backgroundimage from '../images/list.jpg'
 const AddEmployee = () => {
   const [post, setPosts] = useState({});
   const navigate = useNavigate();
@@ -14,7 +13,7 @@ const AddEmployee = () => {
   const addData = () => {
     console.log(post);
     axiosInstance
-      .post("http://localhost:3005/admin/add", post)
+      .post("http://localhost:3002/admin/add", post)
       .then((res) => {
         alert(res.data.message);
         navigate("/employees");
@@ -31,14 +30,14 @@ const AddEmployee = () => {
         justifyContent: "center",
         alignItems: "center",
         minHeight: "calc(100vh - 64px)",
-          backgroundImage:`url(${backgroundimage})`,
+          backgroundColor:'white',
         padding: "20px",
       }}
     >
       <div
         style={{
           borderRadius: "20px",
-          background: "rgba(255, 255, 255, 0.4)",
+          background: "grey",
           padding: "20px",
           textAlign: "center",
           width: "80%",
@@ -73,7 +72,7 @@ const AddEmployee = () => {
                 <input
                   type="text"
                   onChange={inputHandler}
-                  name="pos"
+                  name="position"
                   className="form-control"
                   style={{ width: "540px", textAlign: "left" }}
                 />
@@ -105,7 +104,7 @@ const AddEmployee = () => {
                 </label>
                 <textarea
                   onChange={inputHandler}
-                  name="display"
+                  name="address"
                   id="addressInput"
                   className="form-control"
                   rows="3"

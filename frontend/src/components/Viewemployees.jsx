@@ -8,7 +8,7 @@ const ViewEmployees = () => {
   const [selectedEmployeeId] = useState(null);
 
   const handleAddEmployee = () => {
-    if (!window.confirm("Only Admin can  perform this action"))
+    if (!window.confirm("Rights granted to only Admins"))
       return;
   };
 
@@ -16,7 +16,7 @@ const ViewEmployees = () => {
     const fetchEmployees = async () => {
       try {
         const response = await axiosInstance.get(
-          "http://localhost:3005/user/employees"
+          "http://localhost:3002/user/employees"
         );
         setEmployees(response.data);
       } catch (error) {
@@ -28,11 +28,11 @@ const ViewEmployees = () => {
   }, []);
 
   const handleDelete = (employeeId) => {
-    if (!window.confirm("Only Admin can perform this action"))
+    if (!window.confirm("Rights granted to only Admins"))
       return;
 
     axiosInstance
-      .delete(`http://localhost:3005/admin/employees/${employeeId}`)
+      .delete(`http://localhost:3002/admin/employees/${employeeId}`)
       .then((response) => {
         alert(response.data.message);
         setEmployees(
@@ -45,7 +45,7 @@ const ViewEmployees = () => {
   };
 
   const handleUpdate = (employeeId) => {
-    if (!window.confirm("Only Admin can  perform this action"))
+    if (!window.confirm("Rights granted to only Admins"))
       return;
   };
 
@@ -80,8 +80,8 @@ const ViewEmployees = () => {
               <tr key={employee._id}>
                 <td>{employee.name}</td>
                 <td>{employee.email}</td>
-                <td>{employee.pos}</td>
-                <td>{employee.display}</td>
+                <td>{employee.position}</td>
+                <td>{employee.address}</td>
                 <td className="d-flex justify-content-between">
                  
                   <Button

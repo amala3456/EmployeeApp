@@ -3,7 +3,6 @@ import Box from "@mui/material/Box";
 import TextField from "@mui/material/TextField";
 import { Button, Typography } from "@mui/material";
 import axios from "axios";
-import backgroundimage from '../images//signimage.jpg'
 import { useNavigate } from "react-router-dom";
 const Signup = () => {
   const [users, setUsers] = useState({});
@@ -16,7 +15,7 @@ const Signup = () => {
   const addHandler = () => {
     console.log("clicked", users);
     axios
-      .post("http://localhost:3005/admin", users)
+      .post("http://localhost:3002/admin", users)
       .then((res) => {
         console.log(res);
         alert(res.data.message);
@@ -32,7 +31,10 @@ const Signup = () => {
   return (
     <div className="box"
       style={{
-        backgroundImage:`url(${backgroundimage})`,
+        background: '#b10e3f',
+    background: '#b99fa4', 
+    background: '-webkit-linear-gradient(to right, #240b36, #58ca5e)',
+    background: 'linear-gradient(to right, #240b36, #5546a8)',
         minHeight: "100vh",
         display: "flex",
         justifyContent: "center",

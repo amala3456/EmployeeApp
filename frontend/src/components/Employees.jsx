@@ -18,7 +18,7 @@ const Employees = () => {
       try {
         const token = sessionStorage.getItem("userToken");
         const response = await axiosInstance.get(
-          "http://localhost:3005/admin/employees",
+          "http://localhost:3002/admin/employees",
           {
             headers: {
               token: token,
@@ -35,7 +35,7 @@ const Employees = () => {
 
   const handleDelete = (employeeId) => {
     axiosInstance
-      .delete(`http://localhost:3005/admin/employees/${employeeId}`)
+      .delete(`http://localhost:3002/admin/employees/${employeeId}`)
       .then((response) => {
         alert(response.data.message);
         setEmployees(
@@ -60,14 +60,14 @@ const Employees = () => {
             float: "right",
             marginTop: "1px",
             marginBottom: "12px", 
-            backgroundColor: "blue",
+            backgroundColor: "Green",
             color: "white",
           }}
           onClick={handleAddEmployee}
         >
           Create
         </Button>
-        <table className="table table-success table-striped-columns">
+        <table className="table table-Danger table-striped-columns">
           <thead>
             <tr>
               <th scope="col">Name</th>
@@ -82,8 +82,8 @@ const Employees = () => {
               <tr key={employee._id}>
                 <td>{employee.name}</td>
                 <td>{employee.email}</td>
-                <td>{employee.pos}</td>
-                <td>{employee.display}</td>
+                <td>{employee.position}</td>
+                <td>{employee.address}</td>
                 <td className="d-flex justify-content-between">
                  
                   
